@@ -3,7 +3,16 @@
 
 - [Functional React Primer with a bit of PRPL PWA Pattern (featuring Typescript), but Minus Critical CSS Server-Side Rendering](#functional-react-primer-with-a-bit-of-prpl-pwa-pattern-featuring-typescript-but-minus-critical-css-server-side-rendering)
   - [Get Started](#get-started)
-    - [- ### **"Component Level Transpiled CSS with Styled-Components" !Feed-3**](#component-level-transpiled-css-with-styled-components-feed-3)
+    - [**"Initial Build" Lighthouse Performance !Feed-1**](#initial-build-lighthouse-performance-feed-1)
+    - [**"React-Snapshot" Lighthouse Performance !Feed-2**](#react-snapshot-lighthouse-performance-feed-2)
+    - [**"Component Level Transpiled CSS with Styled-Components" Lighthouse Performance !Feed-3**](#component-level-transpiled-css-with-styled-components-lighthouse-performance-feed-3)
+    - [**Our Three New Routes !Feed-4**](#our-three-new-routes-feed-4)
+    - [**Our New Router !Feed-8**](#our-new-router-feed-8)
+    - [**Build Directory - Monolithic Output !Feed-5**](#build-directory---monolithic-output-feed-5)
+    - [**Build Directory - Lazy Loading Chunks Output !Feed-9**](#build-directory---lazy-loading-chunks-output-feed-9)
+    - [**First Time Visitor PWA Network Activity !Feed-10**](#first-time-visitor-pwa-network-activity-feed-10)
+    - [**First Time Visitor PWA Network Activity !Feed-11**](#first-time-visitor-pwa-network-activity-feed-11)
+    - [**"Lazy Load Assets" Lighthouse Performance !Feed-7**](#lazy-load-assets-lighthouse-performance-feed-7)
   - [Relevant Links](#relevant-links)
   - [Extra Extra Credit](#extra-extra-credit)
     - [*if you are into that sort of thing*](#if-you-are-into-that-sort-of-thing)
@@ -11,7 +20,7 @@
 ## Get Started
 - `> create-react-app enlightenment-series --scripts-version=react-scripts-ts`
 - `> cd enlightenment-series`
-- **"Initial Build" Lighthouse Performance ![Feed-1](/assets/feed-1.png)**
+###  **"Initial Build" Lighthouse Performance ![Feed-1](/assets/feed-1.png)**
 - `> yarn add react-snapshot`
 - For the purposes of this presentation invert `noImplicitAny` to `false`
 
@@ -93,7 +102,7 @@ registerServiceWorker();
 }
 ```
 
-- **"React Snapshot" Lighthouse Performance ![Feed-2](/assets/feed-2.png)** 
+### **"React-Snapshot" Lighthouse Performance ![Feed-2](/assets/feed-2.png)** 
 
 - Lets compare `<body></body>` tags of the original and react-snapshot `index.html`:
 
@@ -200,7 +209,7 @@ export default App;
 </body>
 ```
 
-- ### **"Component Level Transpiled CSS with Styled-Components" ![Feed-3](/assets/feed-3.png)**
+### **"Component Level Transpiled CSS with Styled-Components" Lighthouse Performance ![Feed-3](/assets/feed-3.png)**
 
 - Time to add routes via React-Router.
 - `> yarn add react-router-dom`
@@ -389,6 +398,14 @@ import * as React from 'react';
 export const NotFound = () => <h3>404: Not Found</h3>;
 ```
 
+### **Our Three New Routes ![Feed-4](/assets/feed-4.png)**
+
+### **Our New Router ![Feed-8](/assets/feed-8.png)**
+
+- Currently we have a monolithic Javascript Webpack output:
+### **Build Directory - Monolithic Output ![Feed-5](/assets/feed-5.png)**
+
+- Lets lazy-load Javascript assets via async routes.
 - `> touch src/containers/AsyncContainer.tsx src/components/AsyncRouteTwo.tsx src/components/AsyncNotFound.tsx`
 - Update `src/components/AppRouter.tsx` for async routes:
 
@@ -426,6 +443,17 @@ import asyncComponent from '../containers/AsyncComponent';
 
 export const AsyncNotFound = asyncComponent(() => import('./NotFound').then((module: any) => module.NotFound));
 ```
+
+- Our new chunked Javascript assets:
+### **Build Directory - Lazy Loading Chunks Output ![Feed-9](/assets/feed-9.png)**
+
+- Our app is a Progressive Web Application. On first load and transitioning through all routes we have this Network activity:
+### **First Time Visitor PWA Network Activity ![Feed-10](/assets/feed-10.png)**
+
+- Our app is a Progressive Web Application. On sequential loads our Network activity:
+### **First Time Visitor PWA Network Activity ![Feed-11](/assets/feed-11.png)**
+
+### **"Lazy Load Assets" Lighthouse Performance ![Feed-7](/assets/feed-7.png)**
 
 - `> yarn build`
 - `> aws s3 mb "s3://enlightenment-series-4604bd5718a4f7eaf48ee7b081de4c2813d9470d" --profile testaccount --region us-east-1`
