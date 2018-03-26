@@ -5,7 +5,7 @@
   - [Get Started](#get-started)
   - [Relevant Links](#relevant-links)
   - [Extra Extra Credit](#extra-extra-credit)
-    - [*IF you are into that sort of thing*](#if-you-are-into-that-sort-of-thing)
+    - [*if you are into that sort of thing*](#if-you-are-into-that-sort-of-thing)
 
 ## Get Started
 - `> create-react-app enlightenment-series --scripts-version=react-scripts-ts`
@@ -92,7 +92,7 @@ registerServiceWorker();
 }
 ```
 
-- **"React Snapshot" Lighthouse Performance [Feed-2](#feed-2)**; We will compare the `<body></body>` tags of the original and react-snapshot HTML documents:
+- **"React Snapshot" Lighthouse Performance ![Feed-2](/assets/feed-2.png)**; We will compare the `<body></body>` tags of the original and react-snapshot HTML documents:
 
 ```html
 <!-- Original -->
@@ -440,7 +440,7 @@ export const AsyncNotFound = asyncComponent(() => import('./NotFound').then((mod
 - https://developers.google.com/web/tools/lighthouse/
 
 ## Extra Extra Credit 
-### *IF you are into that sort of thing*
+### *if you are into that sort of thing*
 - https://storybook.js.org/ in-lieu of http://patternlab.io/- https://github.com/redux-observable/redux-observable
 - https://facebook.github.io/flux/
 - http://reactivex.io/rxjs/
