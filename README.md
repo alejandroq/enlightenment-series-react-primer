@@ -1,5 +1,5 @@
 # Functional React Primer with a bit of PRPL PWA Pattern (featuring Typescript), but Minus Critical CSS Server-Side Rendering
-*By Alejandro Quesada*
+*By Alejandro Quesada, Software Engineer with the Front-End Group*
 
 - [Functional React Primer with a bit of PRPL PWA Pattern (featuring Typescript), but Minus Critical CSS Server-Side Rendering](#functional-react-primer-with-a-bit-of-prpl-pwa-pattern-featuring-typescript-but-minus-critical-css-server-side-rendering)
   - [Get Started](#get-started)
@@ -9,9 +9,9 @@
 ## Get Started
 1. `> create-react-app enlightenment-series --scripts-version=react-scripts-ts`
 2. `> cd enlightenment-series`
-3. "Initial Build" Lighthouse Performance [Feed-1](#feed-1) 
+3. **"Initial Build" Lighthouse Performance [Feed-1](#feed-1)**
 4. `> yarn add react-snapshot`
-5. For the purposes of this presentation invert "noImplicitAny" to false 
+5. For the purposes of this presentation invert `noImplicitAny` to `false`
 
 ```json
   {
@@ -91,7 +91,8 @@ registerServiceWorker();
 }
 ```
 
-6. "React Snapshot" Lighthouse Performance [Feed-2](#feed-2); We will compare the `<body></body>` tags of the original and react-snapshot HTML documents:
+6. **"React Snapshot" Lighthouse Performance [Feed-2](#feed-2)**; We will compare the `<body></body>` tags of the original and react-snapshot HTML documents:
+
 ```html
 <!-- Original -->
 <body>
@@ -116,9 +117,11 @@ registerServiceWorker();
     <script type="text/javascript" src="/static/js/main.fca5d544.js"></script>
 </body>
 ```
-7. Whilst the hydration effect is minimal at this level of application simplicity; it scales well (and can be uses for multiple routes, an oppurtunity for AMP HTML rendering). React-Snapshot is preferrable IF serving static, however there is Server-side rendering as well. Why do this? For intial perceptual performance and SEO. Let's reduce our CSS demand by incorprating it into our Javascript. Thereinby our transpile will treeshake redundant and unused styles whilst allowing us to style at the component level.
+
+7. Whilst the hydration effect is minimal at this level of application simplicity; it scales well (and can be uses for multiple routes *NOTE: this is seen below*, an oppurtunity for AMP HTML rendering if one felt so). React-Snapshot is preferrable IF serving static; one can server-side render as well. Why hydrate? For intial perceptual performance and SEO. Let's reduce our CSS demand by incorprating it into our Javascript. Thereinby our transpile can treeshake redundant and unused styles whilst allowing us to style at the component level.
 8. `> yarn add styled-components`
 9. Update `src/App.tsx` accordingly (notice the `src/App.css` styles are now encorporated into module limited components):
+
 ```tsx
 import * as React from 'react';
 import styled, { keyframes } from 'styled-components';
@@ -173,7 +176,9 @@ const App = (props: Props) => (
 
 export default App;
 ```
+
 10. The new HTML `<body></body>` is as so (note: the new style classes embedded in the Javascript below):
+
 ```html
 <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -190,13 +195,14 @@ export default App;
     <script type="text/javascript" src="/static/js/main.1bbbc589.js"></script>
 </body>
 ```
+
 11. Time to add routes via React-Router.
 12. `> yarn add react-router-dom`
 13. `> mkdir src/components`
 14. `> mkdir src/containers`
 15. `> touch src/components/AppShell.tsx src/components/AppRouter.tsx src/components/RouteOne.tsx src/components/RouteTwo.tsx src/components/NotFound.tsx`
-
 16. In `src/containers/AsyncContainer.tsx`: 
+
 ```tsx
 import * as React from 'react';
 
@@ -225,7 +231,9 @@ export default function asyncComponent(getComponent: any) {
     return AsyncComponent;
 }
 ```
+
 17. In `src/components/AppShell.tsx`:
+
 ```tsx
 import * as React from 'react';
 import styled from 'styled-components';
@@ -243,7 +251,9 @@ export const AppShell = () => (
     </Container>    
 );
 ```
+
 18. In `src/components/Header.tsx`:
+
 ```tsx
 import * as React from 'react';
 import styled, { keyframes } from 'styled-components';
@@ -289,7 +299,9 @@ export const Header = () => (
     </Banner>
 );
 ```
+
 19. In `src/components/AppRouter.tsx`:
+
 ```tsx
 import * as React from 'react';
 import { Switch, Route } from 'react-router-dom';
@@ -308,7 +320,9 @@ export const AppRouter = () => (
     </main>
 );
 ```
+
 20. In `src/components/RouteOne.tsx`:
+
 ```tsx
 import * as React from 'react';
 import styled from 'styled-components';
@@ -324,7 +338,9 @@ export const RouteOne = () => (
     </AppIntro>
 );
 ```
+
 21. In `src/components/RouteTwo.tsx`:
+
 ```tsx
 import * as React from 'react';
 import styled from 'styled-components';
@@ -340,7 +356,9 @@ export const RouteTwo = () => (
     </AppIntro>
 );
 ```
+
 22: Add Router in `src/index.tsx` to:
+
 ```tsx
 import * as React from 'react';
 import { render } from 'react-snapshot';
@@ -356,6 +374,7 @@ render(
 );
 registerServiceWorker();
 ```
+
 23. In `src/components/NotFound.tsx`:
 ```tsx
 import * as React from 'react';
