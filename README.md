@@ -376,7 +376,7 @@ registerServiceWorker();
 ```
 
 - In `src/components/NotFound.tsx`:
-- 
+
 ```tsx
 import * as React from 'react';
 
