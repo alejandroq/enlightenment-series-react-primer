@@ -3,6 +3,7 @@
 
 - [Functional React Primer with a bit of PRPL PWA Pattern (featuring Typescript), but Minus Critical CSS Server-Side Rendering](#functional-react-primer-with-a-bit-of-prpl-pwa-pattern-featuring-typescript-but-minus-critical-css-server-side-rendering)
   - [Get Started](#get-started)
+    - [- ### **"Component Level Transpiled CSS with Styled-Components" !Feed-3**](#component-level-transpiled-css-with-styled-components-feed-3)
   - [Relevant Links](#relevant-links)
   - [Extra Extra Credit](#extra-extra-credit)
     - [*if you are into that sort of thing*](#if-you-are-into-that-sort-of-thing)
@@ -93,7 +94,8 @@ registerServiceWorker();
 ```
 
 - **"React Snapshot" Lighthouse Performance ![Feed-2](/assets/feed-2.png)** 
-We will compare the `<body></body>` tags of the original and react-snapshot HTML documents:
+
+- Lets compare `<body></body>` tags of the original and react-snapshot `index.html`:
 
 ```html
 <!-- Original -->
@@ -120,7 +122,7 @@ We will compare the `<body></body>` tags of the original and react-snapshot HTML
 </body>
 ```
 
-- Whilst the hydration effect is minimal at this level of application simplicity; it scales well (and can be uses for multiple routes *NOTE: this is seen below*, an oppurtunity for AMP HTML rendering if one felt so). React-Snapshot is preferrable IF serving static; IF dynamic, one can server-side render as well. Why hydrate? For intial perceptual performance and SEO. Let's reduce our CSS demand by incorprating it into our Javascript. Thereinby our transpile can treeshake redundant and unused styles whilst allowing us to style at the component level.
+- Whilst the hydration effect is minimal at this level of application simplicity; it scales well (and can be uses for multiple routes *NOTE: this is seen below*, an oppurtunity for AMP HTML rendering if one felt so). React-snapshot is preferrable IF serving static; IF dynamic, one can server-side render. Why hydrate? For intial perceptual performance and SEO. Let's reduce our CSS demand by incorprating it into our Javascript. Thereinby our transpile can treeshake redundant and unused styles whilst allowing us to style at the component level.
 - `> yarn add styled-components`
 - Update `src/App.tsx` accordingly (notice the `src/App.css` styles are now encorporated into module limited components):
 
@@ -197,6 +199,8 @@ export default App;
     <script type="text/javascript" src="/static/js/main.1bbbc589.js"></script>
 </body>
 ```
+
+- ### **"Component Level Transpiled CSS with Styled-Components" ![Feed-3](/assets/feed-3.png)**
 
 - Time to add routes via React-Router.
 - `> yarn add react-router-dom`
