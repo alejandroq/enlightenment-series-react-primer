@@ -3,13 +3,14 @@
 
 - [Functional React Primer with a bit of PRPL PWA Pattern (featuring Typescript), but Minus Critical CSS Server-Side Rendering](#functional-react-primer-with-a-bit-of-prpl-pwa-pattern-featuring-typescript-but-minus-critical-css-server-side-rendering)
   - [Get Started](#get-started)
-  - [Links](#links)
-  - [Extra Credit *IF you are into that sort of thing*](#extra-credit-if-you-are-into-that-sort-of-thing)
+  - [Relevant Links](#relevant-links)
+  - [Extra Extra Credit](#extra-extra-credit)
+    - [*IF you are into that sort of thing*](#if-you-are-into-that-sort-of-thing)
 
 ## Get Started
 - `> create-react-app enlightenment-series --scripts-version=react-scripts-ts`
 - `> cd enlightenment-series`
-- **"Initial Build" Lighthouse Performance [Feed-1](#feed-1)**
+- **"Initial Build" Lighthouse Performance ![Feed-1](/assets/feed-1.png)**
 - `> yarn add react-snapshot`
 - For the purposes of this presentation invert `noImplicitAny` to `false`
 
@@ -384,7 +385,7 @@ export const NotFound = () => <h3>404: Not Found</h3>;
 ```
 
 - `> touch src/containers/AsyncContainer.tsx src/components/AsyncRouteTwo.tsx src/components/AsyncNotFound.tsx`
-- Update `src/components/AppRouter.tsx` for Async Routes:
+- Update `src/components/AppRouter.tsx` for async routes:
 
 ```tsx
 import * as React from 'react';
@@ -426,10 +427,10 @@ export const AsyncNotFound = asyncComponent(() => import('./NotFound').then((mod
 - `> aws s3 website "s3://enlightenment-series-4604bd5718a4f7eaf48ee7b081de4c2813d9470d" --index-document index.html --error-document index.html --profile testaccount --region us-east-1`
 - `> aws s3 sync build "s3://enlightenment-series-4604bd5718a4f7eaf48ee7b081de4c2813d9470d" --profile testaccount --region us-east-1 --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers`
 - The S3 URL is now: `http://enlightenment-series-4604bd5718a4f7eaf48ee7b081de4c2813d9470d.s3-website-us-east-1.amazonaws.com/`
-- Create the CloudFront according to this article: `https://medium.com/@omgwtfmarc/deploying-create-react-app-to-s3-or-cloudfront-48dae4ce0af`. Why use CloudFront CDN? CloudFront will cache and distribute static documents geographically closer to users at local AWS Edge Locations. This translates to a user in San Francisco having a comporable experience to one in Washington DC despite the assets originating from region us-east-1 (because a Californian would get the asset next door). The contrast to this (and more typical) is that a request from California would have to travel across the United States and back thereinby negatively affecting an entire coast's user experience. The reduction of network travel should minimize bounce rates, etc. CloudFront quickly enables HTTP/2 and distributes SSLs for HTTPS. This should provide us a good mark below on our Progressive Web Application:  
+- Create the CloudFront according to this article: `https://medium.com/@omgwtfmarc/deploying-create-react-app-to-s3-or-cloudfront-48dae4ce0af`. Why use CloudFront CDN? CloudFront will cache and distribute static documents geographically closer to users at local AWS Edge Locations. This translates to a user in San Francisco having a comporable experience to one in Washington DC despite the assets originating from region us-east-1 (because a Californian would get the asset next door). The contrast to this (and more typical) is that a request from California would have to travel across the United States and back thereinby negatively affecting an entire coast's user experience. The reduction of network travel should minimize bounce rates, etc. CloudFront, as well, quickly enables configuration for HTTP/2 and distributes SSLs for HTTPS. This should provide us a good mark below on our Progressive Web Application:  
 - What we have... (with offline, etc)
 
-## Links
+## Relevant Links
 - https://developers.google.com/web/fundamentals/performance/prpl-pattern/
 - http://www.typescriptlang.org/
 - https://github.com/nfl/react-helmet
@@ -438,7 +439,8 @@ export const AsyncNotFound = asyncComponent(() => import('./NotFound').then((mod
 - https://developers.google.com/web/progressive-web-apps/
 - https://developers.google.com/web/tools/lighthouse/
 
-## Extra Credit *IF you are into that sort of thing*
+## Extra Extra Credit 
+### *IF you are into that sort of thing*
 - https://storybook.js.org/ in-lieu of http://patternlab.io/- https://github.com/redux-observable/redux-observable
 - https://facebook.github.io/flux/
 - http://reactivex.io/rxjs/
