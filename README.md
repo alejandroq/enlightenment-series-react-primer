@@ -92,7 +92,8 @@ registerServiceWorker();
 }
 ```
 
-- **"React Snapshot" Lighthouse Performance ![Feed-2](/assets/feed-2.png)**; We will compare the `<body></body>` tags of the original and react-snapshot HTML documents:
+- **"React Snapshot" Lighthouse Performance ![Feed-2](/assets/feed-2.png)** 
+We will compare the `<body></body>` tags of the original and react-snapshot HTML documents:
 
 ```html
 <!-- Original -->
