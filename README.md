@@ -4,14 +4,14 @@
 - [Functional React Primer with a bit of PRPL PWA Pattern (featuring Typescript), but Minus Critical CSS Server-Side Rendering](#functional-react-primer-with-a-bit-of-prpl-pwa-pattern-featuring-typescript-but-minus-critical-css-server-side-rendering)
   - [Get Started](#get-started)
   - [Links](#links)
-  - [Extra Credit](#extra-credit)
+  - [Extra Credit *IF you are into that sort of thing*](#extra-credit-if-you-are-into-that-sort-of-thing)
 
 ## Get Started
-1. `> create-react-app enlightenment-series --scripts-version=react-scripts-ts`
-2. `> cd enlightenment-series`
-3. **"Initial Build" Lighthouse Performance [Feed-1](#feed-1)**
-4. `> yarn add react-snapshot`
-5. For the purposes of this presentation invert `noImplicitAny` to `false`
+- `> create-react-app enlightenment-series --scripts-version=react-scripts-ts`
+- `> cd enlightenment-series`
+- **"Initial Build" Lighthouse Performance [Feed-1](#feed-1)**
+- `> yarn add react-snapshot`
+- For the purposes of this presentation invert `noImplicitAny` to `false`
 
 ```json
   {
@@ -45,7 +45,7 @@
   }
 ```
 
-4. The browser renders markup and styles before it parses through Javascript, so lets send the aforementioned in its complete state. Replace ReactDOM.render in `src/index.tsx` with:
+- The browser renders markup and styles before it parses through Javascript, so lets send the aforementioned in its complete state. Replace ReactDOM.render in `src/index.tsx` with:
 
 ```tsx
 import * as React from 'react';
@@ -61,7 +61,7 @@ render(
 registerServiceWorker();
 ```
 
-5. Update the package.json "build" script:
+- Update the package.json "build" script:
 
 ```json
 {
@@ -91,7 +91,7 @@ registerServiceWorker();
 }
 ```
 
-6. **"React Snapshot" Lighthouse Performance [Feed-2](#feed-2)**; We will compare the `<body></body>` tags of the original and react-snapshot HTML documents:
+- **"React Snapshot" Lighthouse Performance [Feed-2](#feed-2)**; We will compare the `<body></body>` tags of the original and react-snapshot HTML documents:
 
 ```html
 <!-- Original -->
@@ -118,9 +118,9 @@ registerServiceWorker();
 </body>
 ```
 
-7. Whilst the hydration effect is minimal at this level of application simplicity; it scales well (and can be uses for multiple routes *NOTE: this is seen below*, an oppurtunity for AMP HTML rendering if one felt so). React-Snapshot is preferrable IF serving static; one can server-side render as well. Why hydrate? For intial perceptual performance and SEO. Let's reduce our CSS demand by incorprating it into our Javascript. Thereinby our transpile can treeshake redundant and unused styles whilst allowing us to style at the component level.
-8. `> yarn add styled-components`
-9. Update `src/App.tsx` accordingly (notice the `src/App.css` styles are now encorporated into module limited components):
+- Whilst the hydration effect is minimal at this level of application simplicity; it scales well (and can be uses for multiple routes *NOTE: this is seen below*, an oppurtunity for AMP HTML rendering if one felt so). React-Snapshot is preferrable IF serving static; IF dynamic, one can server-side render as well. Why hydrate? For intial perceptual performance and SEO. Let's reduce our CSS demand by incorprating it into our Javascript. Thereinby our transpile can treeshake redundant and unused styles whilst allowing us to style at the component level.
+- `> yarn add styled-components`
+- Update `src/App.tsx` accordingly (notice the `src/App.css` styles are now encorporated into module limited components):
 
 ```tsx
 import * as React from 'react';
@@ -177,7 +177,7 @@ const App = (props: Props) => (
 export default App;
 ```
 
-10. The new HTML `<body></body>` is as so (note: the new style classes embedded in the Javascript below):
+- The new HTML `<body></body>` is as so *Note: the new style classes embedded in the Javascript below*:
 
 ```html
 <body>
@@ -196,12 +196,12 @@ export default App;
 </body>
 ```
 
-11. Time to add routes via React-Router.
-12. `> yarn add react-router-dom`
-13. `> mkdir src/components`
-14. `> mkdir src/containers`
-15. `> touch src/components/AppShell.tsx src/components/AppRouter.tsx src/components/RouteOne.tsx src/components/RouteTwo.tsx src/components/NotFound.tsx`
-16. In `src/containers/AsyncContainer.tsx`: 
+- Time to add routes via React-Router.
+- `> yarn add react-router-dom`
+- `> mkdir src/components`
+- `> mkdir src/containers`
+- `> touch src/components/AppShell.tsx src/components/AppRouter.tsx src/components/RouteOne.tsx src/components/RouteTwo.tsx src/components/NotFound.tsx`
+- In `src/containers/AsyncContainer.tsx`: 
 
 ```tsx
 import * as React from 'react';
@@ -232,7 +232,7 @@ export default function asyncComponent(getComponent: any) {
 }
 ```
 
-17. In `src/components/AppShell.tsx`:
+- In `src/components/AppShell.tsx`:
 
 ```tsx
 import * as React from 'react';
@@ -252,7 +252,7 @@ export const AppShell = () => (
 );
 ```
 
-18. In `src/components/Header.tsx`:
+- In `src/components/Header.tsx`:
 
 ```tsx
 import * as React from 'react';
@@ -300,7 +300,7 @@ export const Header = () => (
 );
 ```
 
-19. In `src/components/AppRouter.tsx`:
+- In `src/components/AppRouter.tsx`:
 
 ```tsx
 import * as React from 'react';
@@ -321,7 +321,7 @@ export const AppRouter = () => (
 );
 ```
 
-20. In `src/components/RouteOne.tsx`:
+- In `src/components/RouteOne.tsx`:
 
 ```tsx
 import * as React from 'react';
@@ -339,7 +339,7 @@ export const RouteOne = () => (
 );
 ```
 
-21. In `src/components/RouteTwo.tsx`:
+- In `src/components/RouteTwo.tsx`:
 
 ```tsx
 import * as React from 'react';
@@ -357,7 +357,7 @@ export const RouteTwo = () => (
 );
 ```
 
-22: Add Router in `src/index.tsx` to:
+- Add Router in `src/index.tsx` to:
 
 ```tsx
 import * as React from 'react';
@@ -375,14 +375,17 @@ render(
 registerServiceWorker();
 ```
 
-23. In `src/components/NotFound.tsx`:
+- In `src/components/NotFound.tsx`:
+- 
 ```tsx
 import * as React from 'react';
 
 export const NotFound = () => <h3>404: Not Found</h3>;
 ```
-16. `> touch src/containers/AsyncContainer.tsx src/components/AsyncRouteTwo.tsx src/components/AsyncNotFound.tsx`
-25. Update `src/components/AppRouter.tsx` for Async Routes:
+
+- `> touch src/containers/AsyncContainer.tsx src/components/AsyncRouteTwo.tsx src/components/AsyncNotFound.tsx`
+- Update `src/components/AppRouter.tsx` for Async Routes:
+
 ```tsx
 import * as React from 'react';
 import { Switch, Route } from 'react-router-dom';
@@ -401,40 +404,46 @@ export const AppRouter = () => (
     </main>
 );
 ```
-26: In `src/components/AsyncRouteTwo.tsx`:
+
+- In `src/components/AsyncRouteTwo.tsx`:
+
 ```tsx
 import asyncComponent from '../containers/AsyncComponent';
 
 export const AsyncRouteTwo = asyncComponent(() => import('./RouteTwo').then((module: any) => module.RouteTwo));
 ```
-26: In `src/components/AsyncNotFound.tsx`:
+
+- In `src/components/AsyncNotFound.tsx`:
+
 ```tsx
 import asyncComponent from '../containers/AsyncComponent';
 
 export const AsyncNotFound = asyncComponent(() => import('./NotFound').then((module: any) => module.NotFound));
 ```
-27: `> yarn build`
-28: `> aws s3 mb "s3://enlightenment-series-4604bd5718a4f7eaf48ee7b081de4c2813d9470d" --profile testaccount --region us-east-1`
-29: `> aws s3 website "s3://enlightenment-series-4604bd5718a4f7eaf48ee7b081de4c2813d9470d" --index-document index.html --error-document index.html --profile testaccount --region us-east-1`
-30: `> aws s3 sync build "s3://enlightenment-series-4604bd5718a4f7eaf48ee7b081de4c2813d9470d" --profile testaccount --region us-east-1 --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers`
-31: The S3 URL is now: `http://enlightenment-series-4604bd5718a4f7eaf48ee7b081de4c2813d9470d.s3-website-us-east-1.amazonaws.com/`
-32: Create the CloudFront according to this article: `https://medium.com/@omgwtfmarc/deploying-create-react-app-to-s3-or-cloudfront-48dae4ce0af`. Why use CloudFront CDN? CloudFront will cache and distribute static documents geographically closer to users at local AWS Edge Locations. This translates to a user in San Francisco having a comporable experience to one in Washington DC despite the assets originating from region us-east-1 (because a Californian would get the asset next door). The contrast to this (and more typical) is that a request from California would have to travel across the United States and back thereinby negatively affecting an entire coast's user experience. The reduction of network travel should minimize bounce rates, etc. CloudFront quickly enables HTTP/2 and distributes SSLs for HTTPS. This should provide us a good mark below on our Progressive Web Application:  
-33: What we have... (with offline, etc)
+
+- `> yarn build`
+- `> aws s3 mb "s3://enlightenment-series-4604bd5718a4f7eaf48ee7b081de4c2813d9470d" --profile testaccount --region us-east-1`
+- `> aws s3 website "s3://enlightenment-series-4604bd5718a4f7eaf48ee7b081de4c2813d9470d" --index-document index.html --error-document index.html --profile testaccount --region us-east-1`
+- `> aws s3 sync build "s3://enlightenment-series-4604bd5718a4f7eaf48ee7b081de4c2813d9470d" --profile testaccount --region us-east-1 --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers`
+- The S3 URL is now: `http://enlightenment-series-4604bd5718a4f7eaf48ee7b081de4c2813d9470d.s3-website-us-east-1.amazonaws.com/`
+- Create the CloudFront according to this article: `https://medium.com/@omgwtfmarc/deploying-create-react-app-to-s3-or-cloudfront-48dae4ce0af`. Why use CloudFront CDN? CloudFront will cache and distribute static documents geographically closer to users at local AWS Edge Locations. This translates to a user in San Francisco having a comporable experience to one in Washington DC despite the assets originating from region us-east-1 (because a Californian would get the asset next door). The contrast to this (and more typical) is that a request from California would have to travel across the United States and back thereinby negatively affecting an entire coast's user experience. The reduction of network travel should minimize bounce rates, etc. CloudFront quickly enables HTTP/2 and distributes SSLs for HTTPS. This should provide us a good mark below on our Progressive Web Application:  
+- What we have... (with offline, etc)
 
 ## Links
 - https://developers.google.com/web/fundamentals/performance/prpl-pattern/
-<!-- - https://github.com/redux-observable/redux-observable -->
-<!-- - https://facebook.github.io/flux/ -->
 - http://www.typescriptlang.org/
-<!-- - http://reactivex.io/rxjs/ -->
 - https://github.com/nfl/react-helmet
 - https://github.com/geelen/react-snapshot
 - https://en.wikipedia.org/wiki/Functional_programming
-<!-- - https://12factor.net/ -->
 - https://developers.google.com/web/progressive-web-apps/
 - https://developers.google.com/web/tools/lighthouse/
-<!-- - https://www.ampproject.org/ -->
-<!-- - https://medium.com/styled-components/the-simple-guide-to-server-side-rendering-react-with-styled-components-d31c6b2b8fbf -->
 
-## Extra Credit
-- https://storybook.js.org/ in-lieu of http://patternlab.io/
+## Extra Credit *IF you are into that sort of thing*
+- https://storybook.js.org/ in-lieu of http://patternlab.io/- https://github.com/redux-observable/redux-observable
+- https://facebook.github.io/flux/
+- http://reactivex.io/rxjs/
+- https://12factor.net/ 
+- https://www.ampproject.org/
+- https://medium.com/styled-components/the-simple-guide-to-server-side-rendering-react-with-styled-components-d31c6b2b8fbf
+
+This concludes *Functional React Primer with a bit of PRPL PWA Pattern (featuring Typescript), but Minus Critical CSS Server-Side Rendering*.
