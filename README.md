@@ -12,38 +12,41 @@
 3. "Initial Build" Lighthouse Performance [Feed-1](#feed-1) 
 4. `> yarn add react-snapshot`
 5. For the purposes of this presentation invert "noImplicitAny" to false 
+
 ```json
-{
-  "compilerOptions": {
-    "outDir": "build/dist",
-    "module": "esnext",
-    "target": "es5",
-    "lib": ["es6", "dom"],
-    "sourceMap": true,
-    "allowJs": true,
-    "jsx": "react",
-    "moduleResolution": "node",
-    "rootDir": "src",
-    "forceConsistentCasingInFileNames": true,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "noImplicitAny": false,
-    "strictNullChecks": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "noUnusedLocals": true
-  },
-  "exclude": [
-    "node_modules",
-    "build",
-    "scripts",
-    "acceptance-tests",
-    "webpack",
-    "jest",
-    "src/setupTests.ts"
-  ]
-}
+  {
+    "compilerOptions": {
+      "outDir": "build/dist",
+      "module": "esnext",
+      "target": "es5",
+      "lib": ["es6", "dom"],
+      "sourceMap": true,
+      "allowJs": true,
+      "jsx": "react",
+      "moduleResolution": "node",
+      "rootDir": "src",
+      "forceConsistentCasingInFileNames": true,
+      "noImplicitReturns": true,
+      "noImplicitThis": true,
+      "noImplicitAny": false,
+      "strictNullChecks": true,
+      "suppressImplicitAnyIndexErrors": true,
+      "noUnusedLocals": true
+    },
+    "exclude": [
+      "node_modules",
+      "build",
+      "scripts",
+      "acceptance-tests",
+      "webpack",
+      "jest",
+      "src/setupTests.ts"
+    ]
+  }
 ```
+
 4. The browser renders markup and styles before it parses through Javascript, so lets send the aforementioned in its complete state. Replace ReactDOM.render in `src/index.tsx` with:
+
 ```tsx
 import * as React from 'react';
 import { render } from 'react-snapshot';
@@ -57,7 +60,9 @@ render(
 );
 registerServiceWorker();
 ```
+
 5. Update the package.json "build" script:
+
 ```json
 {
   "name": "enlightenment-series",
@@ -85,6 +90,7 @@ registerServiceWorker();
   }
 }
 ```
+
 6. "React Snapshot" Lighthouse Performance [Feed-2](#feed-2); We will compare the `<body></body>` tags of the original and react-snapshot HTML documents:
 ```html
 <!-- Original -->
