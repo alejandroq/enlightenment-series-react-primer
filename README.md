@@ -191,7 +191,7 @@ const App = (props: Props) => (
 export default App;
 ```
 
-- The new HTML `<body></body>` is as so *Note: the new style classes embedded in the Javascript below*:
+- The new HTML `<body></body>` is as so. *Note: the new style classes embedded in the Javascript below*:
 
 ```html
 <body>
