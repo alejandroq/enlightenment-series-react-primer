@@ -16,6 +16,7 @@
     - [**"CloudFront Distribution" Lighthouse Performance !Feed-12**](#cloudfront-distribution-lighthouse-performance-feed-12)
     - [**Browser Javascript Turnt Off !Feed-13**](#browser-javascript-turnt-off-feed-13)
     - [**Offline Viewing !Feed-14**](#offline-viewing-feed-14)
+    - [**Safari Technology Preview (PWAs are on their way to MacOS) !Feed-16**](#safari-technology-preview-pwas-are-on-their-way-to-macos-feed-16)
     - [**CloudFront Popular Objects Report !Feed-15**](#cloudfront-popular-objects-report-feed-15)
   - [Relevant Links](#relevant-links)
   - [Extra Extra Credit](#extra-extra-credit)
@@ -467,12 +468,15 @@ export const AsyncNotFound = asyncComponent(() => import('./NotFound').then((mod
 - `> aws s3 sync build "s3://enlightenment-series-4604bd5718a4f7eaf48ee7b081de4c2813d9470d" --profile testaccount --region us-east-1 --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers`
 - The S3 URL is now: `http://enlightenment-series-4604bd5718a4f7eaf48ee7b081de4c2813d9470d.s3-website-us-east-1.amazonaws.com/`
 - Create the CloudFront according to this article: `https://medium.com/@omgwtfmarc/deploying-create-react-app-to-s3-or-cloudfront-48dae4ce0af`. Why use CloudFront CDN? CloudFront will cache and distribute static documents geographically closer to users at local AWS Edge Locations. This translates to a user in San Francisco having a comporable experience to one in Washington DC despite the assets originating from region us-east-1 (because a Californian would get the asset next door). The contrast to this (and more typical) is that a request from California would have to travel across the United States and back thereinby negatively affecting an entire coast's user experience. The reduction of network travel should minimize bounce rates, etc. CloudFront, as well, quickly enables configuration for HTTP/2, GZIP and distributes SSLs for HTTPS. This should provide us a good mark below on our Progressive Web Application:  
+- The CloudFront URL is now: `https://d34fl1nfj4ze8f.cloudfront.net/`
 
 ### **"CloudFront Distribution" Lighthouse Performance ![Feed-12](/assets/feed-12.png)**
 
 ### **Browser Javascript Turnt Off ![Feed-13](/assets/feed-13.png)**
 
 ### **Offline Viewing ![Feed-14](/assets/feed-14.png)**
+
+### **Safari Technology Preview (PWAs are on their way to MacOS) ![Feed-16](/assets/feed-16.png)**
 
 ### **CloudFront Popular Objects Report ![Feed-15](/assets/feed-15.png)**
 *Note: I have reloaded the page more than 5 times, significantly more, and the index.html has only been pulled 5 times. This is because assets are locally cached via a PWA Service Worker (network proxy). Second note: source maps should be removed as is a development artifact.*
