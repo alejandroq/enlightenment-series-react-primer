@@ -11,7 +11,7 @@
     - [**Build Directory - Monolithic Output !Feed-5**](#build-directory---monolithic-output-feed-5)
     - [**Build Directory - Lazy Loading Chunks Output !Feed-9**](#build-directory---lazy-loading-chunks-output-feed-9)
     - [**First Time Visitor PWA Network Activity !Feed-10**](#first-time-visitor-pwa-network-activity-feed-10)
-    - [**First Time Visitor PWA Network Activity !Feed-11**](#first-time-visitor-pwa-network-activity-feed-11)
+    - [**Sequential Time Visitor PWA Network Activity !Feed-11**](#sequential-time-visitor-pwa-network-activity-feed-11)
     - [**"Lazy Load Assets" Lighthouse Performance !Feed-7**](#lazy-load-assets-lighthouse-performance-feed-7)
   - [Relevant Links](#relevant-links)
   - [Extra Extra Credit](#extra-extra-credit)
@@ -20,9 +20,10 @@
 ## Get Started
 - `> create-react-app enlightenment-series --scripts-version=react-scripts-ts`
 - `> cd enlightenment-series`
+
 ###  **"Initial Build" Lighthouse Performance ![Feed-1](/assets/feed-1.png)**
 - `> yarn add react-snapshot`
-- For the purposes of this presentation invert `noImplicitAny` to `false`
+- For the purposes of this presentation invert `noImplicitAny` to `false` in `tsconfig.json`:
 
 ```json
   {
@@ -451,7 +452,7 @@ export const AsyncNotFound = asyncComponent(() => import('./NotFound').then((mod
 ### **First Time Visitor PWA Network Activity ![Feed-10](/assets/feed-10.png)**
 
 - Our app is a Progressive Web Application. On sequential loads our Network activity:
-### **First Time Visitor PWA Network Activity ![Feed-11](/assets/feed-11.png)**
+### **Sequential Time Visitor PWA Network Activity ![Feed-11](/assets/feed-11.png)**
 
 ### **"Lazy Load Assets" Lighthouse Performance ![Feed-7](/assets/feed-7.png)**
 
@@ -471,6 +472,7 @@ export const AsyncNotFound = asyncComponent(() => import('./NotFound').then((mod
 - https://en.wikipedia.org/wiki/Functional_programming
 - https://developers.google.com/web/progressive-web-apps/
 - https://developers.google.com/web/tools/lighthouse/
+- https://developers.google.com/web/tools/lighthouse/audits/custom-splash-screen
 
 ## Extra Extra Credit 
 ### *if you are into that sort of thing*
