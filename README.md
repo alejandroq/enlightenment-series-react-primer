@@ -214,40 +214,8 @@ export default App;
 
 - Time to add routes via React-Router.
 - `> yarn add react-router-dom`
-- `> mkdir src/components`
-- `> mkdir src/containers`
+- `> mkdir src/components src/containers`
 - `> touch src/components/AppShell.tsx src/components/AppRouter.tsx src/components/RouteOne.tsx src/components/RouteTwo.tsx src/components/NotFound.tsx`
-- In `src/containers/AsyncContainer.tsx`: 
-
-```tsx
-import * as React from 'react';
-
-export default function asyncComponent(getComponent: any) {
-    class AsyncComponent extends React.Component {
-        static Component: any;
-        state = { Component: AsyncComponent.Component };
-
-        componentWillMount() {
-            if (!this.state.Component) {
-                getComponent().then((Component: any) => {
-                    AsyncComponent.Component = Component;
-                    this.setState({ Component });
-                });
-            }
-        }
-
-        render() {
-            const { Component } = this.state;
-            if (Component) {
-                return <Component {...this.props} />;
-            }
-            return null;
-        }
-    }
-    return AsyncComponent;
-}
-```
-
 - In `src/components/AppShell.tsx`:
 
 ```tsx
@@ -428,6 +396,38 @@ export const AppRouter = () => (
     </main>
 );
 ```
+
+- In `src/containers/AsyncContainer.tsx`: 
+
+```tsx
+import * as React from 'react';
+
+export default function asyncComponent(getComponent: any) {
+    class AsyncComponent extends React.Component {
+        static Component: any;
+        state = { Component: AsyncComponent.Component };
+
+        componentWillMount() {
+            if (!this.state.Component) {
+                getComponent().then((Component: any) => {
+                    AsyncComponent.Component = Component;
+                    this.setState({ Component });
+                });
+            }
+        }
+
+        render() {
+            const { Component } = this.state;
+            if (Component) {
+                return <Component {...this.props} />;
+            }
+            return null;
+        }
+    }
+    return AsyncComponent;
+}
+```
+
 
 - In `src/components/AsyncRouteTwo.tsx`:
 
