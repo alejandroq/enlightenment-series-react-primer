@@ -16,6 +16,7 @@
     - [**"CloudFront Distribution" Lighthouse Performance !Feed-12**](#cloudfront-distribution-lighthouse-performance-feed-12)
     - [**Browser Javascript Turnt Off !Feed-13**](#browser-javascript-turnt-off-feed-13)
     - [**Offline Viewing !Feed-14**](#offline-viewing-feed-14)
+    - [**Service Worker Async Pulls Chunks !Feed-17**](#service-worker-async-pulls-chunks-feed-17)
     - [**Safari Technology Preview (PWAs are on their way to MacOS) !Feed-16**](#safari-technology-preview-pwas-are-on-their-way-to-macos-feed-16)
     - [**CloudFront Popular Objects Report !Feed-15**](#cloudfront-popular-objects-report-feed-15)
   - [Relevant Links](#relevant-links)
@@ -475,6 +476,8 @@ export const AsyncNotFound = asyncComponent(() => import('./NotFound').then((mod
 ### **Browser Javascript Turnt Off ![Feed-13](/assets/feed-13.png)**
 
 ### **Offline Viewing ![Feed-14](/assets/feed-14.png)**
+
+### **Service Worker Async Pulls Chunks ![Feed-17](/assets/feed-17.png)**
 
 ### **Safari Technology Preview (PWAs are on their way to MacOS) ![Feed-16](/assets/feed-16.png)**
 
